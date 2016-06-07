@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 7, 2016, 2:47:02 AM
+    Author     :  Abdur Razzak <abdur.razzaq06@gmail.com>
+*/
+
+#head{
+    background-color: gray;
+    font-family: sans-serif;
+    font-size: 100px;
+}
+
+.button {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 20px;
+}
+a:hover{
+/*    color: hotpink;*/
+    background-color: #4CAF50;
+}
