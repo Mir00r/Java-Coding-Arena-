@@ -4,3 +4,5 @@ CREATE TABLE loginapp.`product` (
   `quantity` int(10) unsigned NOT NULL,
   PRIMARY KEY  (`id`)
 );
+
+
