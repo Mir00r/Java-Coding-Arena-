@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/web/listuser.jsp</file>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/web/index.jsp</file>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/src/java/com/mir00r/controller/UserController.java</file>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/src/java/com/mir00r/model/User.java</file>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/src/java/com/mir00r/util/Database.java</file>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/web/user.jsp</file>
+            <file>file:/D:/Java%20Kamkaiz/MVC_CRUD_App/src/java/com/mir00r/dao/UserDao.java</file>
+        </group>
+    </open-files>
+</project-private>
