@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:head>
+        <title>Ajax Example</title>
+        <style>
+            tfoot{
+                text-align: center;
+            }
+            thead{
+                background-color: darkgreen;
+                color: white;
+            }
+            td{
+                font-weight: bold;
+            }
+            .msg{
+                font-size: small;
+                color: green;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <center>
+            <h:panelGrid id="panelmain" columns="2" border="1">
+            
+                <h:form>
+                    <h:panelGrid id="panel1" columns="1" border="1"
+                                 cellpadding="5" cellspacing="1">
+                        
+                        <f:facet name="header">
+                            <h:outputText value="Display Current Time"/>
+                        </f:facet>
+                        <h:commandButton value="Update Time" action="nothing">
+                            <f:ajax render="timeResult"/>
+                        </h:commandButton>
+                        <h:outputText value="#{sumBean.time}" id="timeResult"/>
+                    </h:panelGrid>
+                </h:form>
+                
+                <h:form>
+                    <h:panelGrid id="panel2" columns="2" border="1"
+                                 cellpadding="5" cellspacing="1">
+                        
+                        <f:facet name="header">
+                            <h:outputText value="Display Sum of Two Numbers"/>
+                        </f:facet>
+                        <h:outputLabel value="First number:"/>
+                        <h:inputText value="#{sumBean.num1}"/>
+                        <h:outputLabel value="Second number:"/>
+                        <h:inputText value="#{sumBean.num2}"/>
+                        <h:outputLabel value="Sum:"/> 
+                        <h:outputText value="#{sumBean.sum}" id="sumResult"/>
+                        <f:facet name="footer">
+                            <h:commandButton value="Compute Sum">
+                                <f:ajax execute="@form" render="sumResult"/>
+                            </h:commandButton>
+                        </f:facet>
+                    </h:panelGrid>
+                </h:form>
+                
+            </h:panelGrid>
+            <br/>
+            
+            <h:form>
+                <h:panelGrid id="panel3" columns="2" border="1"
+                             cellpadding="5" cellspacing="1">
+                    
+                    <f:facet name="header">
+                        <h:outputText value="Update User Info"/>
+                    </f:facet>
+                    <h:outputLabel value="Select User:"/>
+                    
+                    <h:selectOneMenu value="#{userBean.selectedname}" id="ulist">
+                        <f:selectItems value="#{userBean.fullName}"/>
+                        <f:ajax event="change" render="fname lname email uname pass reg" listener="#{userBean.fullInfo}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="First Name:"/>
+                    <h:inputText value="#{userBean.first_name}" id="fname"/>
+                    <h:outputLabel value="Last Name:"/>
+                    <h:inputText value="#{userBean.last_name}" id="lname"/>
+                    <h:outputLabel value="Email:"/>
+                    <h:inputText value="#{userBean.email}" id="email"/>
+                    <h:outputLabel value="User Name:"/>
+                    <h:inputText value="#{userBean.uname}" id="uname" readonly="true"/>
+                    <h:outputLabel value="Password:"/>
+                    <h:inputSecret value="#{userBean.pass}" id="pass"/>
+                    <h:outputLabel value="Registration Date:"/>
+                    <h:inputText value="#{userBean.regdate}" id="reg"/> 
+                    
+                    <f:facet name="footer">
+                        <h:outputLabel value="#{userBean.msg}" id="msg" styleClass="msg"/>
+                        <h:commandButton value="Update Info" action="#{userBean.updateuser}">
+                            <f:ajax render="msg ulist" execute="@form"/>
+                        </h:commandButton>
+                    </f:facet>
+                    
+                </h:panelGrid>
+            </h:form>  
+        </center>      
+    </h:body>
+</html>
