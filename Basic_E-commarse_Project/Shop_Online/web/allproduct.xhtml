@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Display Product</title>
+        <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8" />
+    </h:head>
+    <h:body>
+        <center>
+            <h:form id="form">
+
+                <p:panel header="Cart">
+                    <h:outputText value="#{shoppingCartMB.cartsize} 
+                                  #{shoppingCartMB.item}" id="cart" />
+
+                    <h:outputLink value="cart.xhtml">View Cart</h:outputLink>
+                </p:panel>
+
+                <p:dataGrid var="product" value="#{displayProductMB.allProduct}" 
+                            columns="3" rows="10" paginator="true" id="pro" 
+                            paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                            {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
+                            rowsPerPageTemplate="6, 12, 16">
+
+                    <f:facet name="header">
+                        <h:outputLabel value="All Product" />
+                    </f:facet>
+
+                    <p:panel header="#{product.proName}">
+
+                        <h:panelGrid columns="1">
+                            <h:graphicImage name="#{product.proUrl}" 
+                                            library="images" width="100" height="150" />
+                            <h:outputText value="#{product.proPrice}" />
+
+                            <p:commandButton action="#{shoppingCartMB.addtoCart(product)}" 
+                                             value="Add to Cart" ajax="false">
+
+                            </p:commandButton>
+
+                        </h:panelGrid>
+
+                    </p:panel>
+
+                </p:dataGrid>
+
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
