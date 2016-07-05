@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 6, 2016 2:46:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Users" table="users" catalog="hibernatedb" optimistic-lock="version">
+        <id name="uname" type="string">
+            <column name="uname" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="pwd" type="string">
+            <column name="pwd" length="10" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" unique="true" />
+        </property>
+        <property name="dor" type="date">
+            <column name="dor" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
