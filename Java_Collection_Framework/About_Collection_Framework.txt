@@ -1,0 +1,48 @@
+1. What is the collection framework?
+
+	->Collection => A collection is an object that groups multiple elements into a single unit.
+		example - collection of books.
+	
+	->Collection Framework => The collection framework is a unified achitecture for representing and manipulating collections.
+	
+	-> Collection framework contains the following stuff:
+		1. Interfaces
+		2. Implementations
+		3. Algorithm
+
+
+2. Benefits Of Using Collection Framework?
+
+	-> Reduces programming effort.
+	-> Increases program speed and quality.
+	-> Reduces effprt for code maintenence.
+	-> Reusability and inheritance. 
+
+
+3. Collection Interfaces and Classes?
+
+	-> The collections framework defines several interfaces.
+	-> The collection interfaces allow collections to be manipulated independently of their representations.
+	-> Java provides a set of standard collection classes that implement the collection interfaces.
+	-> Some have full implementations and others are abstract classes.
+	-> AbstractList, ArrayList, LinkedList.
+	-> AbsractSet, HashSet, TreeSet.
+	-> AbstractMap, HashMap, LinkedHashMap
+	-> Stack, Queue, etc 
+	
+	==>> Full Implementations set?
+		-> ArrayList, LinkedList.
+		-> HashSet, TreeSet
+		-> HashMap, LinkedHashMap
+		-> Stack, Queue, etc 
+	==>> Abstract Classes set?
+		-> AbstractList
+		-> AbstractMap
+		-> AbstractSet
+
+4. Important Note for Map
+	-> HaspMap does not guarantee ordering of elements.
+	-> TreeMap orders elements according to the ascending order of the key.
+	-> LinkedListMap maintains the elements insertions order.
+
+Tutorial Link -> http://dimikcomputing.com/course/javaee-online-course/?course_type=content&course_page=1&lecture=1
