@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop 
+                    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+                    http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+                    
+    <aop:aspectj-autoproxy />    
+    
+    <bean id="manager" class="com.mir00r.model.Manager" >
+        <property name="name" value="Manager Name" />
+    </bean>
+    
+    <bean id="accountant" class="com.mir00r.model.Accountant" >
+        <property name="name" value="Accountant Name" />
+    </bean>
+    
+    <bean id="empservice" class="com.mir00r.service.EmpService" autowire="byName" >
+        
+    </bean>
+    
+    <context:component-scan base-package="com.mir00r.aspect" />
+    
+<!--    xml based AOP configuration -->
+    <bean id="empAspect" class="com.mir00r.aspect.EmpAspect" />
+    <aop:config>
+        <aop:aspect id="empAspect" ref="empAspect" >
+            <aop:pointcut id="allGettersDummy" expression="execution( * get*(..) )" />
+            <aop:around method="AroundAdvice" pointcut-ref="allGettersDummy" />
+        </aop:aspect>
+    </aop:config>
+    
+</beans>
+
