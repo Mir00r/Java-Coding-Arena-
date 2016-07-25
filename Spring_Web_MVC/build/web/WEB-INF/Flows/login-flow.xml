@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+
+    <var name="loginBean" class="com.mir00r.model.LoginBean" />
+     
+    <!--     Display the Login page-->
+    
+    <view-state id="loginView" view="/WEB-INF/jsp/login.jsp" model="loginBean" >
+        <transition on="loginCredentialsEntered" to="loginAction" /> 
+        <transition on="newAccountRequest" to="createNewAccount" />
+    </view-state>
+     
+    <action-state id="loginAction">
+        <evaluate expression="loginService.performLogin(loginBean)" /> 
+         
+        <transition to="loginSuccessView" />
+         
+        <transition on-exception="com.mir00r.service.IncorrectLoginCredentialsException" 
+                    to="loginErrorView" />
+    </action-state>
+     
+    <view-state id="loginSuccessView" view="/WEB-INF/jsp/login_success.jsp" />
+    <view-state id="loginErrorView" view="/WEB-INF/jsp/login_error.jsp" />
+     
+    <subflow-state id="createNewAccount" subflow="createNewAccountFlow">
+        <transition on="newAccountCreated" to="loginView" />
+    </subflow-state>
+    
+</flow>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop 
+                    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                     http://www.springframework.org/schema/mvc
+                    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context 
+                    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                    http://www.springframework.org/schema/webflow-config 
+                    http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+                    
+    <context:annotation-config />  
+<!--    <context:component-scan base-package="com.mir00r.controller" />-->
+    <context:component-scan base-package="com.mir00r.service" />
+<!--    <mvc:annotation-driven />-->
+    
+<!--    <bean id="jspViewResolver" 
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="viewClass" 
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <bean id="messageSource" 
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource" >
+        <property name="basename" value="/WEB-INF/employeemessage" />
+                <property name="cacheSeconds" value="1" />
+        
+    </bean>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/addemp" />
+            <bean id="maintenanceInterceptor" 
+                  class="com.mir00r.interceptor.MaintenanceInterceptor" >
+
+            </bean>
+        </mvc:interceptor>
+        <bean 
+            class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="locale" />
+        </bean>
+    </mvc:interceptors>
+    
+    <bean id="localeResolver" 
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >
+        
+          <property name="defaultLocale" value="en" />
+          <property name="cookieName" value="myAppLocaleCookie" />
+          <property name="cookieMaxAge" value="3600" />              
+    </bean>-->
+    
+    <flow:flow-executor id="loginFlowExecutor" flow-registry="loginFlowRegistry" />
+
+    <!--    Define the registry that holds references to all flow related XML configuration-->
+    
+    <flow:flow-registry id="loginFlowRegistry">
+        <flow:flow-location id="loginFlow" path="/WEB-INF/Flows/login-flow.xml" />
+        <flow:flow-location id="createNewAccountFlow" path="/WEB-INF/Flows/new-account-flow.xml" />
+    </flow:flow-registry>
+   
+    <!--    Define FlowHandlerMapping to tell DispatcherServlet (in web.xml)
+    to send flow request to Spring Web Flow-->
+      
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <property name="flowRegistry" ref="loginFlowRegistry" />
+    </bean>   
+    
+    <!--    Define FlowHandlerAdapter to handle Spring Web Flow request
+    call. -->
+     
+    <!--     This is COntroller class in Spring Web Flow     -->
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+        <property name="flowExecutor" ref="loginFlowExecutor" />
+    </bean>      
+              
+</beans>
