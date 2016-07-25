@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+ 
+    <package name="default" extends="struts-default">
+        <action name="product" class="com.mir00r.Product">
+            <result name="success">/welcome.jsp</result>
+        </action>
+    </package>
+    
+    
+<!--    for checking autocompleter example -->
+    <package name="autoform" namespace="/" extends="struts-default">
+        <action name="autoform" class="com.mir00r.AutoComplete">
+            <result>autocomplete.jsp</result>
+        </action>
+    </package>
+    
+    <package name="autoaction" namespace="/" extends="struts-default">
+        <action name="autoaction" class="com.mir00r.AutoComplete">
+            <result>autoresult.jsp</result>
+        </action>
+    </package>
+    
+<!--    for checking login validation-->
+    <package name="login" extends="struts-default">
+        <action name="login" class="com.mir00r.LoginAction">
+            <result>/loginsuccess.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+    </package>
+    
+</struts>
