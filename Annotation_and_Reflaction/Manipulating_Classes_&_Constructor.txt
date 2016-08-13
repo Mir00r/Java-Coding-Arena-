@@ -1,0 +1,43 @@
+1. How to Manipulating classes?
+
+	i ) Class object :
+					Class myObjectClass = MyObject.class;
+	
+	ii ) Class name :
+					String className = myObjectClass.getName();
+	
+	iii ) Modifiers :
+					int modifiers = myObjectClass.getModifiers(); // "public", "private", "static" etc.
+	
+	iv ) Package Info :
+					Package package = myObjectClass.getPackage();
+	
+	v ) Superclass :
+					Class superClass = myObjectClass.getSuperClass();
+	
+	vi ) Interfaces :
+					Class[] interfaces = myObjectClasee.getInterfaces();
+					
+	vii ) Annotations :
+					Annotation[] annotation = myObjectClass.getAnnotations();
+					
+					
+2. How to Manipulating Constructor ?
+	
+	i ) Obtaining constructor : 
+			
+			Constructor[] constructors = myObjectClass.getConstructors();
+			Constructor constructor = myObjectClass.getConstructor ( String.class );
+			
+	ii ) Constructor Parameters : 
+			
+			Constructor constructor = .... ;
+			Class[] parametersTypes = constructor.getParameterTypes ( String.class );
+	
+	iii ) Instantiating objects using constructor object : 
+			
+			// get constructor that takes a String as argument
+			Constructor constructor = .... ;
+			MyObject myObject = ( MyObject ) constructor.newInstance ( "Hello World" );
+	
+	

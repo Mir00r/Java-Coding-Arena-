@@ -1,0 +1,33 @@
+1. What is reflection?
+
+	i ) Reflection makes it possible to inspect classes, interfaces, field and
+		methods at runtime, without knowing the names of the classes, method
+		etc. at compile time.
+	
+	ii ) It is also possible to instantiate new objects, invoke methods and get / set
+		 field values using reflection.
+		 
+
+2. Uses of reflection?
+
+	i ) Reflection can be used as a annotation processor.
+	
+	ii ) Visual Development Environment can benefit from making use of type information
+		 available in reflection to aid the developer in writing corrct code.
+		
+	iii ) Debuggers need to be able to examine private members on classes.
+	
+	iv ) Test tools can make use of reflection to systematically call a set of APIs defined
+		 on a class, to insure a high level of code coverage in a test suite. 
+		 
+		 
+3. Drawbacks of reflection?
+
+	i ) Reflection involves types that are dynamically resolved, so the reflective operations
+		have slower performence.
+	
+	ii ) Reflection requires a runtime permission which may not be present when running under
+		 a security manager.
+		
+	iii ) The reflective code breaks abstraction by accessing privat fields and methods and 
+		  therefore may change behavior with upgrades of the platform.

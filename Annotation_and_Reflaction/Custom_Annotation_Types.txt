@@ -1,0 +1,107 @@
+				Custom Annotation Types
+				
+1. Adding '@' in front of an interface marks it as an annotation
+
+	@interface MyAnnotation {
+		String value() default"";
+		String name();
+		int age();
+		String[] newNames();
+	}
+	
+	-> How to use my custom annotation
+		
+		@MyAnnotation ( value = "123", name = "Jhon", age = 30, newName = { "Jhon", "Smith" } )
+		public class MyClass {
+			// Rest of the code here 
+		}
+
+2. Adding the directives on the top of the annotation :
+	@Retention, @Target, @Inherited, @Documented
+	
+	i ) @Retention : 
+					Tell the compiler whether the annotation will be available at runtime, for inspection via reflection.
+						
+						@Retention( RetentionPolicy.RUNTIME )
+						@interface MyAnnotation {....}
+					
+						-> RetentionPolicy.CLASS : 
+												The annotation is stored in the .class file, but not available at runtime.
+												This is the default retention policy.
+						
+						-> RetentionPolicy.SOURCE : 
+												The annotation is only available in the source code, and not in the .class
+												files and not at runtime.
+												
+	ii ) @Target : 
+				Specify on which Java elements the annotation can be used.
+					
+					@Target( { ElementType.METHOD } )
+					public @interfac MyAnnotation {.....}
+					
+					-> ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR
+					-> ElementType.FIELD, ElementType.LOCAL_VARIABLE
+					-> ElementType.METHOD, ElementType.PACKAGE
+					-> ElementType.PARAMETER, ElementType.TYPE ( class, interface, enum, or annotation )
+					
+	iii ) @Inherited : 
+					Signals that a custom annotation used in a class should be inherited by subclasses
+					inheriting from that class.
+					
+					@Inherited public @interface MyAnnotation ( .... )
+					@MyAnnotation public class MySuperClass { ..... }
+					public class MySubClass extends MySubClass { ..... }
+					
+	iv ) @Documented : 
+					Signal to the JavaDoc tool that your custom annotation should be visible
+					in the JavaDoc for classes using your custom annotation.
+					
+					@Documented public @interface MyAnnotation( ..... )
+					@MyAnnotation public class MySuperClass { ..... }
+					
+					-> ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR
+					-> ElementType.FIELD, ElementType.LOCAL_VARIABLE
+					-> ElementType.METHOD, ElementType.PACKAGE
+					-> ElementType.PARAMETER, ElementType.TYPE ( class, interface, enum, or annotation )				
+					
+
+3. Annotation Placement : Above classes. interfaces, methods, method parameters, fields and local variables.					
+	
+	@Entity
+	public class Vehicle {
+		@Persistent
+		protected String vehicleName = null;
+		
+		@Getter
+		public String getVehiceleName () {
+			return this.vehicleName;
+		}
+		public void setVehicleName ( @Optional String vehicleName ) {
+			this.vehicleName = vehicleName;
+		}
+		
+		public List addVehicleNameToList ( List names ) {
+			@Optional
+			List localNames = names;
+			
+			if ( localNames == null ) {
+				localNames = new ArrayList();
+			}
+			
+			localNames.add ( getVehiceleName() );
+			return localNames;
+		}
+	}
+	
+
+4. Predefined annotation types
+
+	@Deprecated : 
+				Used to mark a class, method or field as deprecated, meaning it should no longer be used.
+	
+	@Override :
+				Used above methods that override methods in a superclass. if the method does not much a
+				method in the superclass, the compiler will give you an error.
+	
+	@SuppressWarnings :
+				Makes the compiler suppress warnings for a given method.

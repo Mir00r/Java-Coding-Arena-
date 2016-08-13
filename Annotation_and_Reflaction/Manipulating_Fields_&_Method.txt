@@ -1,0 +1,56 @@
+1. How to Manipulating fields?
+
+	i ) Obtaining fields :
+					Field[] fields = myObjectClass.getFields();
+					Field field = myObjectClass.getField ("someField");
+	
+	ii ) Field name :
+					String fieldName = field.getName();
+	
+	iii ) Field Type :
+					Object fieldType = field.getType();
+	
+	iv ) Setting field value :
+					field.set(myObject, value); // MyObject myObject = new MyObject();
+	
+	v ) Getting field value :
+					Object value = field.get(myObject);
+	
+	vi ) Accessing private value :
+					Field privateStringField = myObjectClass.getDeclaredField ("privateString");
+					
+					privateStringField.setAccessible(true);
+					
+					Note : NoSuchFiledException and IllegelAccessException needs to be thrown.
+			
+	
+	
+2. How to Manipulating methods?
+	
+	i ) Obtaining method : 
+			
+			Method[] methods = myObjectClass.getDeclaredMethods();
+			Method[] methods = myObjectClass.getMethods();
+			Method method = myObjectClass.getMethod( "doSomething", new Class[] {String.class} );
+			Method method = myObjectClass.getMethod("doSomething");
+			
+	ii ) Method Parameters : 
+			
+			Class[] parametersTypes = method.getParameterTypes ( );
+	
+	iii ) Method return Types : 
+			
+			Class returnTypes = method.getReturnType();
+	
+	iii ) Invoking methods using method object : 
+			
+			Object returnValue = method.invoke( Object target, object ... params );
+	
+	iii ) Accessing private methods : 
+			
+			Method privateStringMethod = myObjectClass.getDeclaredMethod ("getPrivateString");
+			privateStringMethod.setAccessible(true);
+			String returnValue = ( String ) privateStringMethod.invoke( myObject );
+			
+			Note : NoSuchFiledException and IllegelAccessException and Invocation TargetException needs to be thrown.
+	
