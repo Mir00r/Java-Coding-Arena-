@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+<!--    Bean Lifecycle Example how bean init and destroy-->
+<!--    <bean id="hello" class="com.mir00r.Hello" init-method="init" destroy-method="clear" >
+        
+    </bean>-->
+    
+<!--    <bean id="hello" class="com.mir00r.Hello" >
+        
+    </bean>
+    
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor">
+        
+    </bean>-->
+    
+<!--    <bean id="address1" class="com.mir00r.Address">
+        <constructor-arg value="Badda"></constructor-arg>
+        <constructor-arg value="Dhaka"></constructor-arg>
+        <constructor-arg value="Bangladesh"></constructor-arg>
+    </bean>-->
+    
+    <!--    how to setting property using properties file-->
+    <bean id="address1" class="com.mir00r.Address">
+        <constructor-arg value="${address1.state}"></constructor-arg>
+        <constructor-arg value="${address1.city}"></constructor-arg>
+        <constructor-arg value="${address1.country}"></constructor-arg>
+    </bean>
+    
+    
+    <bean id="address2" class="com.mir00r.Address">
+        <constructor-arg value="a1"></constructor-arg>
+        <constructor-arg value="a2"></constructor-arg>
+        <constructor-arg value="Bangladesh"></constructor-arg>
+    </bean>
+    
+<!--    Bean Inheritance Example -->
+    <bean id="emp" class="com.mir00r.Employee" >
+        <property name="address1">
+            <list>
+                <ref bean="address1" />
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="emp2" class="com.mir00r.Employee" parent="emp" >
+        <property name="address1">
+            <list merge="true">
+                <ref bean="address2" />
+            </list>
+        </property>
+    </bean>
+    
+<!--    <bean class="com.mir00r.EmployeeBeanPostProcessor"></bean>-->
+    
+<!--    <bean class="com.mir00r.EmployeeBeanFactoryPostProcessor"></bean>-->
+    
+<!--    how to access property using properties file-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="com/mir00r/address.properties" />
+    </bean>
+    
+<!--     Dependency Injection Example using Constructor-->
+<!--    <bean id="emp" class="com.mir00r.Employee" >
+        <property name="address1" ref="address1" />
+        <property name="address2" ref="address2" /> 
+    </bean>-->
+   
+    <!--   Dependency Injection Example using Constructor
+    <bean id="emp" class="com.mir00r.Employee">
+        <constructor-arg value="10" type="int" ></constructor-arg>
+        <constructor-arg value="Abdur Razzak" ></constructor-arg>
+        <constructor-arg>
+            <ref bean="a1"></ref>
+        </constructor-arg>
+    </bean>-->
+
+</beans>
