@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 25, 2016 2:13:15 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mir00r.spring_mvc.model.Product" table="product" catalog="sph_login" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="productName" type="string">
+            <column name="product_name" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="45" not-null="true" />
+        </property>
+        <property name="price" type="int">
+            <column name="price" not-null="true" />
+        </property>
+        <property name="qty" type="int">
+            <column name="qty" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
